@@ -16,11 +16,11 @@ Source1:	%{name}-vendor-%{vendor_version}.tar.xz
 # Source1-md5:	56594c09b58987171333fb4a6fb2e1a8
 URL:		https://gitlab.com/shackra/goimapnotify
 BuildRequires:	golang >= 1.15
-BuildRequires:	rpmbuild(macros) >= 2.005
+BuildRequires:	rpmbuild(macros) >= 2.009
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	systemd-units >= 38
-ExclusiveArch:	%{ix86} %{x8664} %{arm} aarch64 mips64 mips64le ppc64 ppc64le s390x
+ExclusiveArch:	%go_arches
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_debugsource_packages	0
@@ -37,7 +37,7 @@ using IDLE, golang version.
 %{__mkdir_p} .go-cache
 
 %build
-GOCACHE="$(pwd)/.go-cache" go build -v -mod=vendor -o target/%{name}
+%__go build -v -mod=vendor -o target/%{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT
