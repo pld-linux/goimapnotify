@@ -2,12 +2,12 @@
 
 Summary:	Execute scripts on IMAP mailbox changes using IDLE
 Name:		goimapnotify
-Version:	2.3.12
+Version:	2.3.15
 Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://gitlab.com/shackra/goimapnotify/-/archive/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	a67ec82ab5d82535d8a0a9794859afb9
+# Source0-md5:	da45f0a6cfa310128d20e8491e1a7789
 # cd goimapnotify-%{version}
 # go mod vendor
 # cd ..
@@ -52,6 +52,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGELOG.rst README.md
+%doc CHANGELOG.md README.md
 %attr(755,root,root) %{_bindir}/%{name}
 %{systemduserunitdir}/goimapnotify@.service
