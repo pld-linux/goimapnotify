@@ -23,7 +23,7 @@ Requires:	systemd-units >= 38
 ExclusiveArch:	%go_arches
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_debugsource_packages	0
+%undefine	_debugsource_packages
 
 %description
 Execute scripts on IMAP mailbox changes (new/deleted/updated messages)
