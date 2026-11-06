@@ -1,19 +1,11 @@
-%define		vendor_version	2.5.6
-
 Summary:	Execute scripts on IMAP mailbox changes using IDLE
 Name:		goimapnotify
-Version:	2.5.6
+Version:	2.6.0
 Release:	1
 License:	GPL v3+
 Group:		Applications/Networking
 Source0:	https://gitlab.com/shackra/goimapnotify/-/archive/%{version}/%{name}-%{version}.tar.bz2
-# Source0-md5:	dde43d6ee275e7d35f5ac4d27e21f799
-# cd goimapnotify-%{version}
-# go mod vendor
-# cd ..
-# tar cJf goimapnotify-vendor-%{version}.tar.xz goimapnotify-%{version}/vendor
-Source1:	%{name}-vendor-%{vendor_version}.tar.xz
-# Source1-md5:	6e137324f51e2fd3a512c94482d1e699
+# Source0-md5:	f2b37209e29c9fb6cb90df74b26311b2
 URL:		https://gitlab.com/shackra/goimapnotify
 BuildRequires:	golang >= 1.23
 BuildRequires:	rpmbuild(macros) >= 2.009
@@ -30,9 +22,7 @@ Execute scripts on IMAP mailbox changes (new/deleted/updated messages)
 using IDLE, golang version.
 
 %prep
-%setup -q -a1
-
-%{__mv} %{name}-%{vendor_version}/vendor .
+%setup -q
 
 %{__mkdir_p} .go-cache
 
